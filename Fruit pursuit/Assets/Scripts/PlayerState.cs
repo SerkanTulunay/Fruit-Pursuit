@@ -6,20 +6,21 @@ public class PlayerState : MonoBehaviour
 {
     public int coinAmount = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Respawn();
     }
 
     public void CoinPickup()
     {
         coinAmount++;
+    }
+
+    [SerializeField] private GameObject respawnPosition;
+    public void Respawn(){
+    gameObject.transform.position = respawnPosition.transform.position;
+    }
+    public void ChangeRespawnPosition(GameObject newRespawnPosition){
+    respawnPosition = newRespawnPosition;
     }
 }
